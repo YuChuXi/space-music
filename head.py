@@ -1,5 +1,6 @@
 import librosa
-import soundfile
+import soundfile as sf
+import sounddevice as sd
 import numpy as np
 
 
@@ -49,7 +50,7 @@ def image(audio, p0, head_size, r):
     return np.column_stack((al, ar))
 
 
-A = (1, 1)
+A = (300, 300)
 """
         ^
         |
@@ -63,11 +64,14 @@ A = (1, 1)
         |
 """
 
-head_size = 0.15 # 自己量量你头多大，两耳距离，米
+head_size = 0.14 # 自己量量你头多大，两耳距离，米
 audio, r = librosa.load("0_1.wav")
 naudio = image(audio, A, head_size, r)
-soundfile.write(
+sf.write(
     "0_2.wav",
     naudio,
     r,
 )
+
+sd.play(naudio, r, blocking=True)
+
