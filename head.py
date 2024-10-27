@@ -3,7 +3,7 @@ import soundfile
 import numpy as np
 
 
-eps = 1e-5
+eps = 1e-8
 
 
 def distance(p0, p1):
