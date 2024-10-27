@@ -36,10 +36,14 @@ def amp_weaken(dl, dr):
 def watt_weaken(dl, dr):
     return amp_weaken(dl, dr)**2
 
-def image(p0, head_size):
+def image(audio, p0, head_size):
     dl = distance(p0, (0.5*head_size, 0)) + eps
     dr = distance(p0, (0.5*head_size, 0)) + eps
-    return (sample_delay(delay(dl, dr)), amp_weaken(dl, dr))
+    delay = sample_delay(delay(dl, dr))
+    weaken = amp_weaken(dl, dr)
+
+    return audio
 
 
-librosa.load()
+audio = librosa.load("0_1.wav")
+print(image(audio))
