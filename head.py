@@ -43,14 +43,14 @@ def image(audio, p0, head_size, r):
         al = ar = audio
 
     if weaken > 1:
-        ar = ar / weaken
+        al = al / weaken
     elif weaken < 1:
-        al = al * weaken
+        ar = ar * weaken
 
     return np.column_stack((al, ar))
 
 
-A = (300, 300)
+A = (1, 1)
 """
         ^
         |
